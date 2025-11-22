@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Amar Lokhhi Bou</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Great+Vibes&family=Special+Elite&display=swap" rel="stylesheet">
+
+<style>
+/* --- General Reset --- */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Special Elite', monospace; overflow-x:hidden;}
+
+/* --- Sections --- */
+section {
+  display:none;
+  width:100%;
+  min-height:100vh; /* allow page to grow with images */
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:2rem;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+  position:relative;
+  z-index:0;
+}
+section.active {
+  display:flex;
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* --- Headings & Text --- */
+h1,h2 {margin-bottom:1rem;}
+h1 {
+  font-family:'Playfair Display', serif;
+  font-size:3rem;
+  font-style:italic;
+  color:#ffd700;
+}
+h2 {
+  font-family:'Great Vibes', cursive;
+  font-size:3rem;
+}
+p {
+  font-family:'Special Elite', monospace;
+  font-size:1.2rem;
+  line-height:1.6;
+  max-width:700px;
+  color:#fefcf6;
+}
+
+/* --- Buttons --- */
+button {
+  margin-top:2rem;
+  padding:0.8rem 2rem;
+  font-size:1.2rem;
+  font-family:'Playfair Display', serif;
+  border:none;
+  border-radius:12px;
+  cursor:pointer;
+  background: linear-gradient(90deg,#ffb347,#ffcc33);
+  color:#0b0c1c;
+  box-shadow:0 0 20px rgba(255,204,51,0.6);
+  transition:0.3s;
+  z-index:10;
+  position:relative;
+}
+button:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
+
+/* --- Image Layout --- */
+.photo-grid {
+  display:grid;
+  gap:1rem;
+  margin-top:2rem;
+}
+.grid-2 {grid-template-columns: repeat(2,1fr);}
+.grid-4 {grid-template-columns: repeat(2,1fr);}
+.grid-6 {grid-template-columns: repeat(3,1fr);}
+.grid-10 {grid-template-columns: repeat(5,1fr);}
+
+img {
+  width:100%;
+  height:auto;        /* allow full uncropped image height */
+  object-fit:contain;  /* prevents image from cutting */
+  border-radius:12px;
+  box-shadow:0 0 25px rgba(255,255,255,0.2);
+  transition: transform 0.5s;
+}
+img:hover {
+  transform: scale(1.05) rotate(0.5deg);
+}
+
+.caption {
+  font-style:italic;
+  margin-top:0.5rem;
+  color:#ffd700;
+  font-size:1rem;
+}
+
+/* --- Star Effects --- */
+.stars, .shooting-stars {
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:-1;
+  overflow:hidden;
+}
+.star {
+  position:absolute;
+  width:2px; height:2px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 3s infinite;
+}
+@keyframes twinkle {
+  0%,100% {opacity:0.2;}
+  50% {opacity:1;}
+}
+.shooting-star {
+  position:absolute;
+  width:2px;
+  height:80px;
+  background:linear-gradient(45deg, #fff, transparent);
+  animation:shoot linear infinite;
+}
+@keyframes shoot {
+  0% {transform: translateX(0) translateY(0) rotate(45deg); opacity:0;}
+  50% {opacity:1;}
+  100% {transform: translateX(800px) translateY(400px) rotate(45deg); opacity:0;}
+}
+
+/* --- Page Backgrounds --- */
+#page1 {background:#0b0c1c url('stars-bg.jpg') center/cover no-repeat;}
+#page2 {background: linear-gradient(to bottom, #1c1b2c, #2b203e);}
+#page3 {background: #1e1c2b;}
+#page4 {background: linear-gradient(to right, #1b1a2d, #2d243f);}
+#page5 {background: #1c1c22;}
+#page6 {background: url('galaxy-bg.jpg') center/cover no-repeat;}
+#page7 {background: linear-gradient(to bottom, #2b202e, #3c2f46);}
+
+/* --- Poem Page Overlay --- */
+#page6::before {
+  content: "";
+  position:absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.4);
+  z-index:0;
+}
+#page6 p, #page6 h2 {
+  position: relative;
+  z-index:1;
+  color:#fff;
+  text-shadow:0 0 10px rgba(0,0,0,0.7);
+  max-width:700px;
+  margin:0 auto;
+  line-height:1.8;
+}
+#page6 h2 {color:#ffd700;}
+</style>
+</head>
+<body>
+
+<!-- Star Background -->
+<div class="stars"></div>
+<div class="shooting-stars"></div>
+
+<!-- PAGE 1 -->
+<section id="page1" class="active">
+  <h1>HAPPY BIRTHDAY <br> AMAR LOKKHI BOU!!!</h1>
+  <button onclick="nextPage()">Begin</button>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2">
+  <p>To my dearest Amar Lokhhi Bou,<br>
+  On this special day, I celebrate not just your birth, but the light, warmth, and beauty you bring into my life.<br>
+  May your heart always be filled with the joy you bring to mine, and may every dream you hold close today become tomorrow’s reality.<br>
+  Happy Birthday, my love.</p>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3">
+  <div class="photo-grid grid-2">
+    <div>
+      <img src="bou12.jpg" alt="">
+      <div class="caption">The beginning of the beautiful soul I adore.</div>
+    </div>
+    <div>
+      <img src="bou13.jpg" alt="">
+      <div class="caption">A little spark that grew into my everything.</div>
+    </div>
+  </div>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- PAGE 4 -->
+<section id="page4">
+  <div class="photo-grid grid-6">
+    <div><img src="bou11.jpg"><div class="caption">Your smile brightens even my darkest days.</div></div>
+    <div><img src="bou2.jpg"><div class="caption">Grace and elegance in every moment.</div></div>
+    <div><img src="bou1.jpg"><div class="caption">The warmth in your eyes is my favorite light.</div></div>
+    <div><img src="bou5.jpg"><div class="caption">Every laughter of yours is my sweetest melody.</div></div>
+    <div><img src="bou10.jpg"><div class="caption">Beauty that comes from within.</div></div>
+    <div><img src="bou7.jpg"><div class="caption">You inspire every step I take.</div></div>
+  </div>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- PAGE 5 -->
+<section id="page5">
+  <div class="photo-grid grid-4">
+    <div><img src="bou14.jpg"><div class="caption">Forever us, in every moment.</div></div>
+    <div><img src="bou15.jpg"><div class="caption">Side by side, heart to heart.</div></div>
+    <div><img src="bou16.jpg"><div class="caption">Memories we made, memories we will make.</div></div>
+    <div><img src="bou17.jpg"><div class="caption">Our love, timeless and infinite.</div></div>
+  </div>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- PAGE 6 -->
+<section id="page6">
+  <h2>For My Eternal Light</h2>
+  <p>
+    In the quiet of the night, I find your soul in mine,<br>
+    Across time, across worlds, a love so divine.<br><br>
+    Stars may fade, and rivers may bend,<br>
+    But my heart remains, with you till the end.<br><br>
+    Each breath, a whisper of your name,<br>
+    Each thought, a flame, an endless claim.<br><br>
+    You are the rhythm my soul has sought,<br>
+    The meaning in every dream I’ve thought.<br><br>
+    Amar Lokhhi Bou, in your eyes I see,<br>
+    The universe, and all it promises to me.
+  </p>
+  <button onclick="nextPage()">Next</button>
+</section>
+
+<!-- PAGE 7 -->
+<section id="page7">
+  <h2>To My Beloved</h2>
+  <p>
+    My Amar Lokhhi Bou,<br><br>
+    Today is your day, but every day feels like a celebration because of you. 
+    From the moment you entered my life, everything became brighter, warmer, and infinitely more beautiful.<br><br>
+    I want you to know how deeply I cherish every smile, every glance, every silent moment we share. 
+    You are my heart, my peace, my eternal companion. On this birthday, I promise to continue loving you in ways 
+    that honor your spirit, your dreams, and the life we are building together.<br><br>
+    Happy Birthday, my love.<br>
+    Forever yours,<br>
+    <strong> Prince </strong>
+  </p>
+</section>
+
+<script>
+/* --- Page Navigation --- */
+const pages = document.querySelectorAll('section');
+let current = 0;
+pages[current].classList.add('active');
+
+function nextPage() {
+  pages[current].classList.remove('active');
+  current++;
+  if(current >= pages.length) current = pages.length - 1;
+  pages[current].classList.add('active');
+}
+
+/* --- Stars --- */
+const starsContainer = document.querySelector('.stars');
+for(let i=0;i<150;i++){
+  const star = document.createElement('div');
+  star.classList.add('star');
+  star.style.top = Math.random()*100+'%';
+  star.style.left = Math.random()*100+'%';
+  star.style.width = star.style.height = Math.random()*2+1+'px';
+  star.style.animationDuration = (Math.random()*3+2)+'s';
+  starsContainer.appendChild(star);
+}
+
+/* --- Shooting Stars --- */
+const shootingContainer = document.querySelector('.shooting-stars');
+for(let i=0;i<5;i++){
+  const shoot = document.createElement('div');
+  shoot.classList.add('shooting-star');
+  shoot.style.top = Math.random()*50+'%';
+  shoot.style.left = Math.random()*50+'%';
+  shoot.style.animationDuration = (Math.random()*3+4)+'s';
+  shoot.style.animationDelay = (Math.random()*5)+'s';
+  shootingContainer.appendChild(shoot);
+}
+</script>
+
+</body>
+</html>
